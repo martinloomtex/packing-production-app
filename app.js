@@ -28,8 +28,15 @@ document.getElementById("form").addEventListener("submit",async e=>{
  localStorage.setItem("lastProduction",JSON.stringify(payload));
  if(API_URL.includes("PASTE_")){show("Saved on this phone. Connect the Google Sheet backend to share it with all supervisors.",true);return;}
  try{
-   const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
-   if(!r.ok) throw new Error();
+   await fetch(API_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload)
+   });
+
    show("Production submitted successfully.",true);
- }catch(err){show("Internet/backend unavailable. Entry saved on this phone; submit again when connected.");}
+}catch(err){
+   show("Internet/backend unavailable. Entry saved on this phone; submit again when connected.");
+}
 });
