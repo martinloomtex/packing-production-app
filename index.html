@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f4e78">
+<title>Packing Production</title>
+<link rel="manifest" href="manifest.json">
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#f3f6f9;color:#17212b}
+header{background:#1f4e78;color:white;padding:16px;position:sticky;top:0;z-index:2}
+h1{font-size:20px;margin:0}.wrap{max-width:720px;margin:auto;padding:14px}
+.card{background:white;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px #0001}
+label{display:block;font-size:13px;font-weight:bold;margin:10px 0 5px}
+input,select,button{width:100%;padding:13px;border:1px solid #c9d2da;border-radius:9px;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hour{display:grid;grid-template-columns:1fr 105px;gap:8px;align-items:center;margin:8px 0}
+.hour span{font-size:14px}.hour input{padding:10px}
+.total{font-size:20px;font-weight:bold;display:flex;justify-content:space-between}
+button{background:#1f4e78;color:white;border:0;font-weight:bold;margin-top:12px}.secondary{background:#64748b}.status{padding:10px;border-radius:8px;margin-top:10px;display:none}
+.small{font-size:12px;color:#64748b}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>📦 Packing Hourly Production</h1></div></header>
+<div class="wrap">
+<form id="form">
+<div class="card">
+<div class="grid">
+<div><label>Supervisor</label><input id="supervisor" required placeholder="Enter name"></div>
+<div><label>Date</label><input id="date" type="date" required></div>
+</div>
+<div class="grid">
+<div><label>Line / Section</label><input id="line" placeholder="e.g. Packing 1" required></div>
+<div><label>Shift</label><select id="shift"><option>General</option><option>Shift A</option><option>Shift B</option><option>Shift C</option></select></div>
+</div>
+</div>
+
+<div class="card">
+<label>Operation</label>
+<select id="operation">
+<option>Chandrika - EF</option><option>Pondumathi - E-30</option><option>Mano - MC</option>
+<option>Nagesho - CP</option><option>Vanitha - V</option><option>Mageswari - Med</option>
+<option>Pondumi - Beam</option><option>Indrani - Box area</option><option>Anjali - Box</option>
+</select>
+</div>
+
+<div class="card">
+<label>Hourly Quantity</label>
+<div id="hours"></div>
+<div class="total"><span>Total Qty</span><span id="total">0</span></div>
+<label>Target / hour</label><input id="target" type="number" value="320" min="0">
+<div class="total" style="font-size:16px;margin-top:12px"><span>Average / hour</span><span id="avg">0</span></div>
+</div>
+
+<div class="card">
+<label>Remarks</label><input id="remarks" placeholder="Breakdown, shortage, changeover, etc.">
+<button type="submit">SUBMIT PRODUCTION</button>
+<button type="button" class="secondary" onclick="clearForm()">CLEAR</button>
+<div id="status" class="status"></div>
+</div>
+</form>
+<div class="small">Data is saved locally if the phone is offline. Configure the Google Apps Script URL in app.js to send entries to the shared company sheet.</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
