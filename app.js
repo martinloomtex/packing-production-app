@@ -1,6 +1,6 @@
 const TIMES=["9:00-10:00","10:00-11:00","11:00-12:15","12:15-1:45","1:45-2:45","2:45-3:45","3:45-5:00","5:00-6:00"];
 // Paste your deployed Google Apps Script Web App URL here:
-const API_URL="PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
+const API_URL="https://script.google.com/macros/s/AKfycbweA7S3O2LoSMyDkkrcW7aAahIcE6nMxXrw_xbCymWeeZjuZrnxFf8JNX00ibiOAbLtDQ/exec";
 
 const dateEl=document.getElementById("date");
 dateEl.value=new Date().toISOString().slice(0,10);
